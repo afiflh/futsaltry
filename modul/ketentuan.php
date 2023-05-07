@@ -12,8 +12,9 @@
     
 <?php
 $idk='2';
- $ketentuan=mysql_query("select id_about,isi from about where id_about='$idk'");
-$rr=mysql_fetch_array($ketentuan);
+$q = "select id_about,isi from about where id_about='$idk'";
+$ketentuan = mysqli_query($connect, $q);
+$rr = mysqli_fetch_array($ketentuan);
 echo "$rr[isi]";
 ?>
 

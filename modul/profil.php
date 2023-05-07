@@ -1,4 +1,4 @@
-  <div class="col-md-9" >
+  <div class="col-md-9">
 
                 <div class="widget">
               
@@ -8,14 +8,24 @@
 
                     <div class="post">
                       <div class="entry">
-                        <div id='isi'>
+                        <div id="isi">
     
 <?php
 $idk='1';
- $about=mysql_query("select id_about,isi from about where id_about='$idk'");
-$rr=mysql_fetch_array($about);
+ $about="select id_about,isi from about where id_about='$idk'";
+ $perintah_query= mysqli_query($connect, $about);
+ $rr=mysqli_fetch_array($perintah_query);
 echo "$rr[isi]";
 ?>
+
+<p  style="text-align: justify; font-size: 16px;">
+Lapangan Bolinggoan Futsal adalah sebuah tempat penyewaan lapangan futsal yang terletak di kawasan Probolinggo, 
+Jawa Tengah. Lapangan ini dilengkapi dengan fasilitas yang lengkap dan modern, 
+termasuk lapangan berukuran standar internasional, sistem pencahayaan yang baik, dan ruang ganti yang bersih dan nyaman. 
+Selain itu, Lapangan Rental Futsal Bolinggoan Futsal juga menyediakan berbagai paket sewa lapangan yang terjangkau untuk individu maupun kelompok, 
+sehingga sangat cocok untuk yang ingin bermain futsal bersama teman-teman atau rekan kerja. 
+Dengan layanan yang profesional dan fasilitas yang memadai, Lapangan Rental Futsal Probolinggo menjadi pilihan utama bagi para pecinta olahraga futsal di Probolinggo dan sekitarnya.
+</p>
 
     
   </div>

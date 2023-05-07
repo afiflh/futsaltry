@@ -1,12 +1,14 @@
 <?php
-	$id_harga=$_POST[idharga];
-	$id_lapangan=$_POST[id];
-	$tanggalz=$_POST[tanggalz];
-	$harga=$_POST[harga];
-	$jam=$_POST[jamz];
+	$id_harga=$_POST["idharga"];
+	$id_lapangan=$_POST["id"];
+	$tanggalz=$_POST["tanggalz"];
+	$harga=$_POST["harga"];
+	$jam=$_POST["jamz"];
 	$nama=$_SESSION['usernamepengunjung'];
-	$query=mysql_query("select * from pelanggan where username='$nama'");
-	$rr=mysql_fetch_array($query);
+
+    $q = "select * from pelanggan where username='$nama'";
+	$query = mysqli_query($connect, $q);
+	$rr = mysqli_fetch_array($query);
 	?>
 
 	<div class="main">
@@ -101,3 +103,15 @@
 </div> <!-- /main-inner -->
 
 </div> <!--/ main-->
+
+<head>
+    <style>
+        .row{
+            border-radius: 15px;
+            background-color: lightblue;
+            color: black;
+            font-size: 15px;
+            padding: 10px;
+    }
+    </style>
+</head>

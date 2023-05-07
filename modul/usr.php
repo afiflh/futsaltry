@@ -18,30 +18,35 @@ function konfirmasi()
             <div class="span5">
             <?php
             session_start();
-                  $data=mysql_fetch_array(mysql_query("SELECT * FROM pelanggan WHERE username='$_SESSION[usernamepengunjung]'"));
+                  $p = "SELECT * FROM pelanggan WHERE username='$_SESSION[usernamepengunjung]'";
+                  $query = mysqli_query($connect, $p);
+                  $data=mysqli_fetch_array($query);
                      ?>                     
                     
+                    <div class="box">
                     <legend><b>Edit Data Pelanggan</b> </legend> 
 
                     <form method=POST action="index.php?modul=aksi_usr" enctype='multipart/form-data'>
 
-                       <a href="<?php echo $data['id_pelanggan']; ?>" class="btn btn-warning btn-sm" data-remote="false" data-toggle="modal" data-target="#notifpassword"> Ubah Password</a>
-                       <br /><br />
+                    <a href="<?php echo $data['id_pelanggan']; ?>" class="btn btn-warning btn-sm" data-remote="false" data-toggle="modal" data-target="#notifpassword"> Ubah Password</a>
+                    <br /><br />
 
-                      <label class="control-label" ><b>Id Pelanggan</b></label>
-                      <input name="kode" class="form-control" value="<?php echo $data['id_pelanggan']; ?>" type="text"  readonly>
+                    <label class="control-label" ><b>Id Pelanggan</b></label>
+                    <input name="kode" class="form-control" value="<?php echo $data['id_pelanggan']; ?>" type="text"  readonly>
 
-                      <label class="control-label" ><b>Username</b></label>
-                      <input name="username" class="form-control" value="<?php echo $data['username']; ?>" type="text"  readonly>
+                    <label class="control-label" ><b>Username</b></label>
+                    <input name="username" class="form-control" value="<?php echo $data['username']; ?>" type="text"  readonly>
 
-                      <label class="control-label" ><b>Nama</b></label>
-                      <input name="nama" class="form-control" value="<?php echo $data['nama']; ?>" type="text"  required>
+                    <label class="control-label" ><b>Nama</b></label>
+                    <input name="nama" class="form-control" value="<?php echo $data['nama']; ?>" type="text"  required>
 
-                      <label class="control-label" ><b>Alamat</b></label>
-                      <textarea name="alamat" class="form-control" type="text" required><?php echo $data['alamat']; ?></textarea> 
+                    <label class="control-label" ><b>Alamat</b></label>
+                    <textarea name="alamat" class="form-control" type="text" required><?php echo $data['alamat']; ?></textarea> 
 
-                      <label class="control-label" ><b>Nomer Telpon</b></label>
-                      <input name="no_telpon" class="form-control" value="<?php echo $data['no_telpon']; ?>" type="tel" maxlength="15" onKeyUp="return checkInput(this);" required>
+                    <label class="control-label" ><b>Nomer Telpon</b></label>
+                    <input name="no_telpon" class="form-control" value="<?php echo $data['no_telpon']; ?>" type="tel" maxlength="15" onKeyUp="return checkInput(this);" required>
+                    
+                    
 
                       <script>
                       function checkInput(obj) 
@@ -68,11 +73,13 @@ function konfirmasi()
                             }
                         }
                       </script>
+                      <br>
 
                       <input type="submit" class="btn btn-primary">
                       <input type="reset" class="btn btn-primary"> 
 
                     </form>
+                    </div>
 
             </div> <!-- /span3 -->
 
@@ -118,3 +125,13 @@ function konfirmasi()
 
 })
 </script>            
+<head>
+  <style>
+    .box{
+      border-radius: 10px;
+      background-color: lightblue;
+      color: whitesmoke;
+      padding: 10px;
+    }
+  </style>
+</head>

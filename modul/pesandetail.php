@@ -11,8 +11,8 @@ $(document).ready(function() {
 
 function konfirmasi()
 {
-    tanya = confirm("Anda yakin akan menghapus data ?");
-    if (tanya== true) return true;
+    $tanya = confirm("Anda yakin akan menghapus data ?");
+    if ($tanya== true) return true;
     else return false; 
 } 
 </script>
@@ -48,34 +48,35 @@ function konfirmasi()
                               
 
             session_start();
-                  $sql=mysql_query("SELECT * FROM pemesanan WHERE username='$_SESSION[usernamepengunjung]' order by tanggal ASC");
+                $q = "SELECT * FROM pemesanan WHERE username='$_SESSION[usernamepengunjung]' order by tanggal ASC";
+                $sql=mysqli_query($connect, $q);
                                      
                     
 
-                              while($cc=mysql_fetch_array($sql)){
+                              while($cc=mysqli_fetch_array($sql)){
                                 $no++;
                                ?>
                             <tr>
                               <td align="center"><?php echo $no;  ?></td>
-                              <td align="center"><?php echo $cc['username']; ?></td>
-                              <td align="center"><?php echo $cc['nama_klub']; ?></td>
-                              <td align="center"><?php echo $cc['tanggal']; ?></td>
-                              <td align="center"><?php echo $cc['jam']; ?></td>
-                              <td align="center"><?php echo $cc['no_telpon']; ?></td>
+                              <td align="center"><?php echo $cc["username"]; ?></td>
+                              <td align="center"><?php echo $cc["nama_klub"]; ?></td>
+                              <td align="center"><?php echo $cc["tanggal"]; ?></td>
+                              <td align="center"><?php echo $cc["jam"]; ?></td>
+                              <td align="center"><?php echo $cc["no_telpon"]; ?></td>
                               <td align="center">
                               	<?php
-                              if(($cc[status]==Pending)){?>
-                              <span class="btn btn-warning btn-sm"><?php echo $cc['status']; ?></span>
+                              if(($cc["status"] == "Pending")){?>
+                              <span class="btn btn-warning btn-sm"><?php echo $cc["status"]; ?></span>
                               <?php
-                              }elseif(($cc[status]==Lunas)){
+                              }elseif(($cc["status"] == "Lunas")){
                               	?>
-                              <span class="btn btn-success btn-sm"><?php echo $cc['status']; ?></span>
+                              <span class="btn btn-success btn-sm"><?php echo $cc["status"]; ?></span>
                               <?php
                               }
                               
-                              elseif(($cc[status]==Tertunda)){
+                              elseif(($cc["status"]== "Tertunda")){
                                 ?>
-                              <span class="btn btn-success btn-sm" rel="popover" id='el3' data-content="silahkan tunggu kurang lebih 10-15 menit sampai admin menkonfirmasi pesanan anda" title="info"><?php echo $cc['status']; ?></span>
+                              <span class="btn btn-success btn-sm" rel="popover" id='el3' data-content="silahkan tunggu kurang lebih 10-15 menit sampai admin menkonfirmasi pesanan anda" title="info"><?php echo $cc["status"]; ?></span>
                               <?php
                               }
                               ?>
@@ -84,11 +85,11 @@ function konfirmasi()
                               <td>
                              
                               <?php
-                              if(($cc[status]==Pending)){?>
+                              if(($cc["status"] == "Pending")){?>
                                <a href="modul/cetakpesan.php?id=<?php echo $cc['id_pemesanan']; ?>" class="btn btn-info btn-sm" >Cetak Kwitansi</a>
                               	  <a href="index.php?modul=hapus_pemesanan&id=<?php echo $cc['id_pemesanan']; ?>" onclick="return konfirmasi()" class="btn btn-info btn-sm" >Hapus</a>
                               	<?php
-                              }elseif(($cc[status]==Lunas)){
+                              }elseif(($cc["status"] == "Lunas")){
                               	?>
                               	<span></span>
                               <?php
@@ -112,6 +113,7 @@ function konfirmasi()
 
 
 
+
 <script language="javascript">
         $(function ()
         { $("#example").popover();
@@ -124,3 +126,15 @@ function konfirmasi()
             $('#el3').popover('hide')
         }
 </script>
+
+<head>
+    <style>
+        .row{
+            border-radius: 15px;
+            background-color: lightblue;
+            color: black;
+            font-size: 15px;
+            padding: 10px;
+    }
+    </style>
+</head>

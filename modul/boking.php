@@ -61,6 +61,10 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
           <div class="row">         
  
              <div class="span9">
+
+             <div>
+
+             </div>
                 
                             <legend><b>Pemesanan</b></legend>
 
@@ -169,3 +173,14 @@ $('#datepicker').datepicker({ dateFormat: 'DD' });
    
 });
 </script>
+<head>
+  <style>
+    .row{
+      border-radius: 15px;
+      background-color: lightblue;
+      color: black;
+      font-size: 15px;
+      padding: 10px;
+    }
+  </style>
+</head>

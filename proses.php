@@ -98,3 +98,15 @@
 </div> <!-- /main-inner -->
 
 </div> <!--/ main-->
+
+<head>
+    <style>
+        .row{
+      border-radius: 15px;
+      background-color: lightblue;
+      color: black;
+      font-size: 15px;
+      padding: 10px;
+    }
+    </style>
+</head>

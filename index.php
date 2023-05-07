@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 <style>
   body{
-    background-color: blue;
+    background-image: url(img/wallpaperfutsal.jpg);
   }
 
   .widget-content{
