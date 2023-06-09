@@ -39,9 +39,7 @@ if(!empty($_POST['submit'])){
 //GAGAL LOGIN
 	header("Location: login.php?err=yes");
 	}
-	} else {
-        echo "kosong"
-;    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -132,6 +130,8 @@ if(!empty($_POST['submit'])){
 					<label for="password">Password:</label>
 					<input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" required/>
 				</div> <!-- /password -->
+
+				<a href="loginadmin.php">Login Sebagai admin?</a>
 				
 				
 			</div> <!-- /login-fields -->

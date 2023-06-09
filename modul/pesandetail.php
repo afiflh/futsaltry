@@ -16,7 +16,7 @@ function konfirmasi()
     else return false; 
 } 
 </script>
-    
+
 
 <div class="main">
     
@@ -48,7 +48,12 @@ function konfirmasi()
                               
 
             session_start();
+            if($_SESSION['usernamepengunjung'] === 'admin'){
+                $q = "SELECT * FROM pemesanan order by tanggal ASC";
+            } else {
                 $q = "SELECT * FROM pemesanan WHERE username='$_SESSION[usernamepengunjung]' order by tanggal ASC";
+            }
+                
                 $sql=mysqli_query($connect, $q);
                                      
                     
@@ -86,18 +91,24 @@ function konfirmasi()
                              
                               <?php
                               if(($cc["status"] == "Pending")){?>
-                               <a href="modul/cetakpesan.php?id=<?php echo $cc['id_pemesanan']; ?>" class="btn btn-info btn-sm" >Cetak Kwitansi</a>
-                              	  <a href="index.php?modul=hapus_pemesanan&id=<?php echo $cc['id_pemesanan']; ?>" onclick="return konfirmasi()" class="btn btn-info btn-sm" >Hapus</a>
+                                <form action="admin/terima.php" method="POST">
+                                    <input type="hidden" value="<?= $cc['id_pemesanan']?>" name="terima">
+                                    <button class="btn btn-info">Terima</button>
+                                    
+                                </form>                    
                               	<?php
-                              }elseif(($cc["status"] == "Lunas")){
-                              	?>
+                              }elseif(($cc["status"] == "Lunas")){?>
+                                <a href="index.php?modul=hapus_pemesanan&id=<?php echo $cc['id_pemesanan']; ?>" onclick="return konfirmasi()" class="btn btn-info btn-sm" >Hapus</a>
                               	<span></span>
                               <?php
                               }
                               ?>
                             
-                              </td></tr>
+                              </td>
                               <?php } ?>
+                             
+                            </tr>
+                              
 
                               </tbody>
                               </table>
